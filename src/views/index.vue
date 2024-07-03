@@ -30,17 +30,36 @@
     <RouterLink to="/about">Go to About</RouterLink>
   </nav>
   <main>
+    <div class="text-3xl font-bold underline">
+      Hello world!
+    </div>
+    {{x}} {{y}}
     <RouterView />
   </main>
 </template>
 
 <script setup lang="ts">
   import { storeToRefs } from 'pinia'
-  import useAppStore from "@/pinia/modules/app";
-  const appStore = useAppStore();
-  const { count } = storeToRefs(appStore);
+  import useAppStore from "@/pinia/modules/app"
+  const appStore = useAppStore()
+  const { count } = storeToRefs(appStore)
 
   const handleIncrement = () => {
-    appStore.increment();
+    appStore.increment()
   }
+
+  import { useLocalStorage, useMouse } from '@vueuse/core'
+
+  // tracks mouse position
+  const { x, y } = useMouse()
+
+  // persist state in localStorage
+  const store = useLocalStorage(
+    'my-storage',
+    {
+      name: 'Apple',
+      color: 'red',
+    },
+  )
+
 </script>

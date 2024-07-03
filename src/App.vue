@@ -1,5 +1,16 @@
 <template>
-  <n-space>
+  <n-el
+    tag="div"
+    style="
+      position: fixed;
+      right: 44px;
+      bottom: 100px;
+      z-index: 1000;
+      color: var(--primary-color);
+      transition: 0.3s var(--cubic-bezier-ease-in-out);
+    "
+  >
+    <n-space>
       <n-button @click="theme = darkTheme">
         深色
       </n-button>
@@ -7,10 +18,11 @@
         浅色
       </n-button>
     </n-space>
-  <n-config-provider :theme="theme">
-    <n-card>
+  </n-el>
+  <n-config-provider :theme="theme" ref="containerRef">
+    <n-layout position="absolute">
       <RouterView />
-    </n-card>
+    </n-layout>
   </n-config-provider>
 </template>
 

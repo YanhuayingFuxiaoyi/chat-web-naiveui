@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import './style.css'
+import '@/styles/index.scss'
+import '@/styles/tailwind.css'
 import App from './App.vue'
 
 import './permission'
